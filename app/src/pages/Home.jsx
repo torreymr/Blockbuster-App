@@ -1,11 +1,12 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
     <>
-      <h1 className="bg-gradient-to-t from-[#30cfd0] to-[#330867] h-[100vh]">
-        Hello
-      </h1>
+      <div className="bg-gradient-to-t from-[#30cfd0] to-[#330867] h-[100vh] px-[10%]">
+        <Navbar />
+      </div>
     </>
   );
 };
