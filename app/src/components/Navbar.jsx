@@ -7,7 +7,7 @@ const Navbar = ({ toggleDropdown, isActive }) => {
   return (
     <>
       <div className="flex justify-between items-center py-[1.5rem] gap-[4rem]">
-        <div className="w-[5rem] flex flex-col items-center text-center">
+        <div className="w-[5rem] flex flex-col items-start">
           <BiSolidMoviePlay className="w-[3rem] h-auto cursor-pointer" />
           <p className="text-wrap text-sm">WE LOVE MOVIES</p>
         </div>
