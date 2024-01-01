@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dropdown-content {
+  transform: translateY(-100rem);
+  display: flex;
+  padding: 0 2rem;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  transition: transform 0.5s;
+  transform-origin: top center;
+}
+
+.dropdown-content.active {
+  transform: translateY(0);
+}
