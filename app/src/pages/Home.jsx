@@ -18,7 +18,7 @@ const Home = () => {
           isActive={isDropdownVisible}
         />
       )}
-      <div className="bg-gradient-to-t from-[#fdfbfb] to-[#ebedee] h-[100vh] px-[8%] md:px-[10%]">
+      <div className="background-color h-[100vh] px-[8%] md:px-[10%]">
         <Navbar toggleDropdown={toggleDropdown} />
         <Main />
       </div>
