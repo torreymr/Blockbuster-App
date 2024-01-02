@@ -6,7 +6,7 @@ import { IoMdSearch } from "react-icons/io";
 const Navbar = ({ toggleDropdown, isActive }) => {
   return (
     <>
-      <div className="flex justify-between items-center py-[1.5rem] gap-[4rem] text-white">
+      <div className="flex justify-between items-center py-[1.5rem] gap-[4rem] text-white px-[3%] md:px-[5%]">
         <div className="w-[5rem] flex flex-col items-center text-center  cursor-pointer">
           <BiSolidMoviePlay className="w-[3rem] h-auto" />
           <p className="text-wrap text-sm">WE LOVE MOVIES</p>

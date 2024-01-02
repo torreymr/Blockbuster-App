@@ -6,17 +6,17 @@ const Searchbar = ({ toggleDropdown, isActive }) => {
   return (
     <>
       <div className={`dropdown-content ${isActive ? "active" : ""} md:hidden`}>
-        <div className="bg-white py-[2rem] w-full flex justify-center gap-4">
+        <div className="py-[2rem] w-[100%] flex justify-center gap-4 text-white">
           <input
             type="text"
             placeholder="Search Movies"
-            className="w-[70%] h-[2rem] outline-none rounded-full bg-gray-50 px-[1rem] py-[1.5rem]"
+            className="w-[70%] h-[2rem] outline-none rounded-full bg-gray-800 text-white px-[1rem] py-[1.5rem]"
           />
           <button>
             <IoMdSearch className="w-[1.5rem] h-auto" />
           </button>
         </div>
-        <button className="text-black" onClick={toggleDropdown}>
+        <button className="bg-black text-white" onClick={toggleDropdown}>
           <IoMdClose className="w-[1.5rem] h-auto" />
         </button>
       </div>

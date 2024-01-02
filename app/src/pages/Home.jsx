@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import Searchbar from "../components/Searchbar.jsx";
-import Main from "../components/Main.jsx";
+import MainRow from "../components/MainRow.jsx";
 
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -18,9 +18,9 @@ const Home = () => {
           isActive={isDropdownVisible}
         />
       )}
-      <div className="background-color h-[100vh] px-[8%] md:px-[10%]">
+      <div className="background-color h-[100vh] px-[1rem]">
         <Navbar toggleDropdown={toggleDropdown} />
-        <Main />
+        <MainRow />
       </div>
     </>
   );
