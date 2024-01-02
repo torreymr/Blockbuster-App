@@ -19,7 +19,7 @@ const Home = () => {
           isActive={isDropdownVisible}
         />
       )}
-      <div className="background-color min-h-[100vh] px-[1rem]">
+      <div className="background-color min-h-[100vh] px-[1rem] pb-[2rem]">
         <Navbar toggleDropdown={toggleDropdown} />
         <MainRow />
         <Movie />
