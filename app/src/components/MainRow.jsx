@@ -29,15 +29,15 @@ const MainRow = () => {
           What's Popular?
         </h1>
         <div className="w-full h-[600px] flex items-center">
-          <div className="w-full h-[500px] flex items-center relative group">
+          <div className="w-full h-[500px] flex items-center justify-center gap-x-[2rem] relative group">
             <FaArrowLeft
-              className="absolute hidden left-0 group-hover:block opacity-50 hover:opacity-100 cursor-pointer"
+              className="left-0 opacity-50 hover:opacity-100 cursor-pointer"
               size={30}
               onClick={slideLeft}
             />
             <div
               id={"slider"}
-              className="h-[100%] flex items-center overflow-x-scroll scroll-smooth scrollbar-hide whitespace-nowrap gap-[1.5rem]"
+              className="h-[100%] w-[80%] flex items-center overflow-x-scroll scroll-smooth scrollbar-hide whitespace-nowrap gap-[1.5rem]"
             >
               {movies.map((item, id) => (
                 <img
@@ -48,7 +48,7 @@ const MainRow = () => {
               ))}
             </div>
             <FaArrowRight
-              className="absolute hidden right-0 group-hover:block opacity-50 hover:opacity-100 cursor-pointer"
+              className="right-0 opacity-50 hover:opacity-100 cursor-pointer"
               size={30}
               onClick={slideRight}
             />
