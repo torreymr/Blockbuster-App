@@ -16,9 +16,16 @@ const MainRow = () => {
       <div className="text-white pt-[1rem] flex flex-col items-center">
         <h1 className="text-4xl md:text-5xl font-bold">What's Popular?</h1>
         <div className="w-full h-[600px] flex flex-col justify-center">
-          <div id={"slider"} className="h-[85%]">
+          <div
+            id={"slider"}
+            className="h-[65%] flex items-center overflow-x-scroll"
+          >
             {movies.map((item, id) => (
-              <h1>{item?.title}</h1>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${item?.backdrop_path}`}
+                alt={item?.title}
+                className="h-full object-cover"
+              />
             ))}
           </div>
         </div>
