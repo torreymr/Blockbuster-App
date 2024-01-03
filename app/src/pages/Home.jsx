@@ -32,7 +32,7 @@ const Home = () => {
           rowID="Three"
         />
         <Row title="Action" fetchURL={requests.requestAction} rowID="Four" />
-        <Row title="Romance" fetchURL={requests.requestRomance} rowID="Four" />
+        <Row title="Romance" fetchURL={requests.requestRomance} rowID="Five" />
         <Movie />
       </div>
     </>

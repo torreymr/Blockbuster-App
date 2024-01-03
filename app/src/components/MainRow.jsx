@@ -31,7 +31,7 @@ const MainRow = ({ rowID }) => {
         <div className="w-full h-[600px] flex items-center">
           <div className="w-full h-[500px] flex items-center justify-center gap-x-[2rem] relative group">
             <FaArrowLeft
-              className="left-0 opacity-50 hover:opacity-100 cursor-pointer"
+              className="left-0 opacity-50 hover:opacity-100 cursor-pointer hidden md:block"
               size={30}
               onClick={slideLeft}
             />
@@ -48,7 +48,7 @@ const MainRow = ({ rowID }) => {
               ))}
             </div>
             <FaArrowRight
-              className="right-0 opacity-50 hover:opacity-100 cursor-pointer"
+              className="right-0 opacity-50 hover:opacity-100 cursor-pointer hidden md:block"
               size={30}
               onClick={slideRight}
             />
