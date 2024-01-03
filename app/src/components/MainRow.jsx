@@ -3,7 +3,7 @@ import axios from "axios";
 import requests from "../Requests";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-const MainRow = () => {
+const MainRow = ({ rowID }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -13,12 +13,12 @@ const MainRow = () => {
   }, []);
 
   const slideLeft = () => {
-    const slider = document.getElementById("slider");
+    const slider = document.getElementById("slider" + rowID);
     slider.scrollLeft = slider.scrollLeft - 500;
   };
 
   const slideRight = () => {
-    const slider = document.getElementById("slider");
+    const slider = document.getElementById("slider" + rowID);
     slider.scrollLeft = slider.scrollLeft + 500;
   };
 
@@ -36,7 +36,7 @@ const MainRow = () => {
               onClick={slideLeft}
             />
             <div
-              id={"slider"}
+              id={"slider" + rowID}
               className="h-[100%] w-[80%] flex items-center overflow-x-scroll scroll-smooth scrollbar-hide whitespace-nowrap gap-[1.5rem]"
             >
               {movies.map((item, id) => (
