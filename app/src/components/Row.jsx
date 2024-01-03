@@ -25,8 +25,8 @@ const Row = ({ title, fetchURL, rowID }) => {
     <div className="text-white">
       <div className="h-[500px] flex flex-col items-center w-full justify-center">
         <h1 className="text-3xl font-bold pb-[1rem]">{title}</h1>
-        <div className="flex w-full items-center relative">
-          <div className="bg-gray-800 p-5 absolute flex justify-center left-0 items-center cursor-pointer md:block rounded-full">
+        <div className="flex w-full items-center relative group">
+          <div className="bg-gray-800 p-5 absolute hidden group-hover:flex opacity-40 hover:opacity-70 justify-center left-0 items-center cursor-pointer md:block rounded-full">
             <FaArrowLeft size={30} onClick={slideLeft} />
           </div>
           <div
@@ -41,7 +41,7 @@ const Row = ({ title, fetchURL, rowID }) => {
               />
             ))}
           </div>
-          <div className="bg-gray-800 p-5 absolute right-0 flex justify-center items-center cursor-pointer md:block rounded-full">
+          <div className="bg-gray-800 p-5 hidden group-hover:flex opacity-40 hover:opacity-70 absolute right-0 justify-center items-center cursor-pointer md:block rounded-full">
             <FaArrowRight size={30} onClick={slideRight} />
           </div>
         </div>
