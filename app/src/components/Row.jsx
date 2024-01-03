@@ -25,12 +25,10 @@ const Row = ({ title, fetchURL, rowID }) => {
     <div className="text-white">
       <div className="h-[500px] flex flex-col items-center w-full justify-center">
         <h1 className="text-3xl font-bold pb-[1rem]">{title}</h1>
-        <div className="flex w-full items-center gap-[1rem]">
-          <FaArrowLeft
-            className="opacity-50 hover:opacity-100 cursor-pointer hidden md:block"
-            size={30}
-            onClick={slideLeft}
-          />
+        <div className="flex w-full items-center relative">
+          <div className="bg-gray-800 p-5 absolute flex justify-center left-0 items-center cursor-pointer md:block rounded-full">
+            <FaArrowLeft size={30} onClick={slideLeft} />
+          </div>
           <div
             id={"slider" + rowID}
             className="overflow-x-scroll scrollbar-hide flex gap-[1rem] w-[85%] scroll-smooth flex-1"
@@ -43,11 +41,9 @@ const Row = ({ title, fetchURL, rowID }) => {
               />
             ))}
           </div>
-          <FaArrowRight
-            className="opacity-50 hover:opacity-100 cursor-pointer hidden md:block"
-            size={30}
-            onClick={slideRight}
-          />
+          <div className="bg-gray-800 p-5 absolute right-0 flex justify-center items-center cursor-pointer md:block rounded-full">
+            <FaArrowRight size={30} onClick={slideRight} />
+          </div>
         </div>
       </div>
     </div>
