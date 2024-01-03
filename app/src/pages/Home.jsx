@@ -5,6 +5,8 @@ import MainRow from "../components/MainRow.jsx";
 import Movie from "../components/Movie.jsx";
 import Row from "../components/Row.jsx";
 import requests from "../Requests.js";
+import Footer from "../components/Footer.jsx";
+import MiddleColumn from "../components/MiddleColumn.jsx";
 
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -34,7 +36,9 @@ const Home = () => {
         <Row title="Action" fetchURL={requests.requestAction} rowID="Four" />
         <Row title="Romance" fetchURL={requests.requestRomance} rowID="Five" />
         <Movie />
+        <Footer />
       </div>
+      <MiddleColumn />
     </>
   );
 };
