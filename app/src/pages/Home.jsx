@@ -25,7 +25,7 @@ const Home = () => {
           />
         )}
         <Navbar toggleDropdown={toggleDropdown} />
-        <div className="h-full w-full px-[8rem] pb-[2rem] pt-[10rem]">
+        <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[10rem]">
           <MainRow rowID="One" />
           <Row title="Family" fetchURL={requests.requestFamily} rowID="Two" />
           <Movie />
