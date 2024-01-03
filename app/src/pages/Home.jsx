@@ -17,28 +17,34 @@ const Home = () => {
 
   return (
     <>
-      {isDropdownVisible && (
-        <Searchbar
-          toggleDropdown={toggleDropdown}
-          isActive={isDropdownVisible}
-        />
-      )}
-      <div className="background-color min-h-[100vh] px-[1rem] pb-[2rem]">
+      <div className="w-full background-color min-h-[100vh]">
+        {isDropdownVisible && (
+          <Searchbar
+            toggleDropdown={toggleDropdown}
+            isActive={isDropdownVisible}
+          />
+        )}
         <Navbar toggleDropdown={toggleDropdown} />
-        <MainRow rowID="One" />
-        <Row title="Family" fetchURL={requests.requestFamily} rowID="Two" />
-        <Movie />
-        <Row
-          title="Thriller"
-          fetchURL={requests.requestThriller}
-          rowID="Three"
-        />
-        <Row title="Action" fetchURL={requests.requestAction} rowID="Four" />
-        <Row title="Romance" fetchURL={requests.requestRomance} rowID="Five" />
-        <Movie />
-        <Footer />
+        <div className="h-full w-full px-[1rem] pb-[2rem]">
+          <MainRow rowID="One" />
+          <Row title="Family" fetchURL={requests.requestFamily} rowID="Two" />
+          <Movie />
+          <Row
+            title="Thriller"
+            fetchURL={requests.requestThriller}
+            rowID="Three"
+          />
+          <Row title="Action" fetchURL={requests.requestAction} rowID="Four" />
+          <Row
+            title="Romance"
+            fetchURL={requests.requestRomance}
+            rowID="Five"
+          />
+          <Movie />
+          <Footer />
+        </div>
+        <MiddleColumn />
       </div>
-      <MiddleColumn />
     </>
   );
 };
