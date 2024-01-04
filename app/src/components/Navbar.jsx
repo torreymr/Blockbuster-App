@@ -12,7 +12,7 @@ const Navbar = ({ toggleDropdown, isActive }) => {
           <p className="text-wrap text-sm font-bold">WE LOVE MOVIES</p>
         </div>
         <div className="w-[100%] hidden md:flex items-center gap-4">
-          <input className="rounded-full w-[100%] h-[2.5rem] px-[1rem] text-xl outline-none bg-gray-800 text-gray-500" />
+          <input className="rounded-full w-[100%] h-[2.5rem] px-[1rem] text-xl outline-none bg-gray-800 text-white" />
           <button className="p-2">
             <IoMdSearch className="w-[2rem] h-auto" />
           </button>
