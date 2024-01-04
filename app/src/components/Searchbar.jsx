@@ -5,7 +5,11 @@ import { IoMdSearch } from "react-icons/io";
 const Searchbar = ({ toggleDropdown, isActive }) => {
   return (
     <>
-      <div className={`dropdown-content ${isActive ? "active" : ""} md:hidden`}>
+      <div
+        className={`dropdown-content ${
+          isActive ? "active" : ""
+        } md:hidden z-[51]`}
+      >
         <div className="py-[2rem] w-[100%] flex justify-center gap-4 text-white">
           <input
             type="text"
