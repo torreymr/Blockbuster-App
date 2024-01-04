@@ -30,8 +30,11 @@ const MainRow = ({ rowID }) => {
             What's Popular?
           </h1>
           <div className="w-full h-[full] flex items-center justify-center gap-x-[2rem] relative group group">
-            <div className="absolute bg-gray-800 left-0 p-4 rounded-full opacity-40 hover:opacity-70 cursor-pointer hidden group-hover:block">
-              <FaArrowLeft size={30} onClick={slideLeft} />
+            <div
+              className="absolute bg-gray-800 left-0 p-4 rounded-full opacity-40 hover:opacity-70 cursor-pointer hidden group-hover:block"
+              onClick={slideLeft}
+            >
+              <FaArrowLeft size={30} />
             </div>
             <div
               id={"slider" + rowID}
@@ -46,8 +49,11 @@ const MainRow = ({ rowID }) => {
                 />
               ))}
             </div>
-            <div className="absolute bg-gray-800 right-0 p-4 rounded-full opacity-40 hover:opacity-70 cursor-pointer hidden group-hover:block">
-              <FaArrowRight size={30} onClick={slideRight} />
+            <div
+              className="absolute bg-gray-800 right-0 p-4 rounded-full opacity-40 hover:opacity-70 cursor-pointer hidden group-hover:block"
+              onClick={slideRight}
+            >
+              <FaArrowRight size={30} />
             </div>
           </div>
         </div>
