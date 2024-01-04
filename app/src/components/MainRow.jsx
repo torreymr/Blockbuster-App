@@ -14,12 +14,12 @@ const MainRow = ({ rowID }) => {
 
   const slideLeft = () => {
     const slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft = slider.scrollLeft - 500;
+    slider.scrollLeft = slider.scrollLeft - 340;
   };
 
   const slideRight = () => {
     const slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft = slider.scrollLeft + 500;
+    slider.scrollLeft = slider.scrollLeft + 340;
   };
 
   return (
@@ -33,13 +33,14 @@ const MainRow = ({ rowID }) => {
             </div>
             <div
               id={"slider" + rowID}
-              className="h-full w-full flex items-center overflow-x-scroll scroll-smooth scrollbar-hide whitespace-nowrap gap-[1.5rem]"
+              className="h-full w-full flex items-center overflow-x-scroll scroll-smooth scrollbar-hide whitespace-nowrap gap-[1rem]"
             >
               {movies.map((item, id) => (
                 <img
                   src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`}
                   alt={item?.title}
-                  className="h-[85%] md:h-full object-cover cursor-pointer"
+                  className="w-[20rem] object-cover cursor-pointer"
+                  key={id}
                 />
               ))}
             </div>

@@ -38,6 +38,7 @@ const Row = ({ title, fetchURL, rowID }) => {
                 src={`https://image.tmdb.org/t/p/original${item?.poster_path}`}
                 alt={item?.title}
                 className="w-[15rem] object-cover cursor-pointer"
+                key={id}
               />
             ))}
           </div>
