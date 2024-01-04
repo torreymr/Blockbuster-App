@@ -23,7 +23,7 @@ const Row = ({ title, fetchURL, rowID }) => {
 
   return (
     <div className="text-white">
-      <div className="h-[500px] flex flex-col items-center w-full justify-center">
+      <div className="h-[full] flex flex-col items-center w-full justify-center pt-4">
         <h1 className="text-3xl font-bold w-full text-center pb-4">{title}</h1>
         <div className="flex w-full items-center relative group">
           <div className="bg-gray-800 p-4 absolute hidden group-hover:flex opacity-40 hover:opacity-70 justify-center left-0 items-center cursor-pointer rounded-full">
