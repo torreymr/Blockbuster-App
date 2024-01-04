@@ -25,7 +25,7 @@ const MainRow = ({ rowID }) => {
   return (
     <>
       <div className="text-white w-full flex flex-col items-center">
-        <div className="flex flex-col items-center w-[60%]">
+        <div className="flex flex-col items-center w-[80%]">
           <h1 className="text-4xl md:text-5xl font-bold">What's Popular?</h1>
           <div className="w-full h-[700px] flex items-center justify-center gap-x-[2rem] relative group py-[3rem] group">
             <div className="absolute bg-gray-800 left-0 p-4 rounded-full opacity-40 hover:opacity-70 cursor-pointer hidden group-hover:block">
@@ -39,16 +39,12 @@ const MainRow = ({ rowID }) => {
                 <img
                   src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`}
                   alt={item?.title}
-                  className="h-full object-cover cursor-pointer"
+                  className="h-[85%] md:h-full object-cover cursor-pointer"
                 />
               ))}
             </div>
             <div className="absolute bg-gray-800 right-0 p-4 rounded-full opacity-40 hover:opacity-70 cursor-pointer hidden group-hover:block">
-              <FaArrowRight
-                className="right-0 opacity-50 hover:opacity-100 cursor-pointer hidden md:block"
-                size={30}
-                onClick={slideRight}
-              />
+              <FaArrowRight size={30} onClick={slideRight} />
             </div>
           </div>
         </div>
