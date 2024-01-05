@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { IoMdSearch } from "react-icons/io";
@@ -6,8 +7,8 @@ import { IoMdSearch } from "react-icons/io";
 const Navbar = ({ toggleDropdown }) => {
   return (
     <>
-      <div className="text-gray-200 md:px-[8rem] px-[1rem] border-b-2 border-gray-800 fixed top-0 left-0 w-full background-color z-50">
-        <div className="flex justify-between items-center py-[1.5rem] gap-[4rem] ">
+      <div className="text-gray-200 md:px-[8rem] px-[1rem] fixed top-0 left-0 w-full background-color z-50">
+        <div className="flex justify-between items-center py-[1.5rem] gap-[4rem]  border-b-2 border-gray-800">
           <div className="w-full flex items-center gap-[1rem] cursor-pointer">
             <BiSolidMoviePlay className="w-[3rem] md:w-[4rem] h-auto" />
             <p className="text-1xl md:text-3xl w-fit font-thin text-nowrap tracking-wider">
@@ -25,7 +26,6 @@ const Navbar = ({ toggleDropdown }) => {
             <IoMdSearch className="w-[2rem] h-auto" />
           </button>
         </div>
-        <h1 className="hidden lg:block w-full bg-purple-700">Hello World!</h1>
       </div>
     </>
   );
