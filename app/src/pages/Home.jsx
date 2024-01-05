@@ -25,7 +25,7 @@ const Home = () => {
           />
         )}
         <Navbar toggleDropdown={toggleDropdown} />
-        <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[10rem]">
+        <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[8rem]">
           <Row title="Popular" fetchURL={requests.requestPopular} rowID="One" />
           <Row
             title="Top Rated"
