@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import Searchbar from "../components/Searchbar.jsx";
-import MainRow from "../components/MainRow.jsx";
+
 import Movie from "../components/Movie.jsx";
 import Row from "../components/Row.jsx";
 import requests from "../Requests.js";
@@ -26,19 +26,22 @@ const Home = () => {
         )}
         <Navbar toggleDropdown={toggleDropdown} />
         <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[10rem]">
-          <MainRow rowID="One" />
-          <Row title="Family" fetchURL={requests.requestFamily} rowID="Two" />
+          <Row title="Popular" fetchURL={requests.requestPopular} rowID="One" />
+          <Row
+            title="Top Rated"
+            fetchURL={requests.requestTopRated}
+            rowID="Two"
+          />
           <Movie />
           <Row
-            title="Thriller"
-            fetchURL={requests.requestThriller}
+            title="Trending"
+            fetchURL={requests.requestTrending}
             rowID="Three"
           />
-          <Row title="Action" fetchURL={requests.requestAction} rowID="Four" />
           <Row
-            title="Romance"
-            fetchURL={requests.requestRomance}
-            rowID="Five"
+            title="Upcoming"
+            fetchURL={requests.requestUpcoming}
+            rowID="Four"
           />
           <Movie />
           <Footer />
