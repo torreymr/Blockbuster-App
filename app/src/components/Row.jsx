@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
 const Row = ({ title, fetchURL, rowID }) => {
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
+
+  const handleMovieClick = (id) => {
+    navigate(`/details/${id}`);
+  };
 
   useEffect(() => {
     axios.get(fetchURL).then((response) => {
@@ -42,13 +47,11 @@ const Row = ({ title, fetchURL, rowID }) => {
                 alt={item?.title}
                 className="w-[15rem] object-cover cursor-pointer"
                 key={id}
+                onClick={() => handleMovieClick(item.id)}
               />
             ))}
           </div>
-          <div
-            className="bg-gray-800 p-4 hidden group-hover:flex opacity-40 hover:opacity-70 absolute right-0 justify-center items-center cursor-pointer rounded-full"
-            onClick={slideRight}
-          >
+          <div className="bg-gray-800 p-4 hidden group-hover:flex opacity-40 hover:opacity-70 absolute right-0 justify-center items-center cursor-pointer rounded-full">
             <FaArrowRight size={25} />
           </div>
         </div>
