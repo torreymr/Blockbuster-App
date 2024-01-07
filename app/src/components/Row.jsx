@@ -51,7 +51,10 @@ const Row = ({ title, fetchURL, rowID }) => {
               />
             ))}
           </div>
-          <div className="bg-gray-800 p-4 hidden group-hover:flex opacity-40 hover:opacity-70 absolute right-0 justify-center items-center cursor-pointer rounded-full">
+          <div
+            className="bg-gray-800 p-4 hidden group-hover:flex opacity-40 hover:opacity-70 absolute right-0 justify-center items-center cursor-pointer rounded-full"
+            onClick={slideRight}
+          >
             <FaArrowRight size={25} />
           </div>
         </div>
