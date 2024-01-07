@@ -15,6 +15,10 @@ const MovieDetails = () => {
 
   return (
     <div>
+      <img
+        src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+        alt={movie?.title}
+      />
       <h1 className="text-black">{movie?.title}</h1>
     </div>
   );
