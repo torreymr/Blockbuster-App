@@ -7,6 +7,9 @@ const requests = {
   requestUpcoming: `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`,
   requestMovie: (id) =>
     `https://api.themoviedb.org/3/movie/${id}?api_key=${key}`,
+  requestMovieImages: (id) =>
+    `https://api.themoviedb.org/3/movie/${id}/images?api_key=${key}&include_image_language=en`,
 };
 
 export default requests;
+//848326
