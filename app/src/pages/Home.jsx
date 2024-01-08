@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Navbar from "../components/Navbar.jsx";
-import Searchbar from "../components/Searchbar.jsx";
+import Navbar from "../components/Global components/Navbar.jsx";
+import Searchbar from "../components/Global components/Mobile searchbar.jsx";
 
-import Movie from "../components/Movie.jsx";
-import Row from "../components/Row.jsx";
+import Movie from "../components/Home page components/Movie.jsx";
+import Row from "../components/Home page components/Row.jsx";
 import requests from "../Requests.js";
-import Footer from "../components/Footer.jsx";
-import MiddleColumn from "../components/MiddleColumn.jsx";
+import Footer from "../components/Global components/Footer.jsx";
 
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -46,7 +45,6 @@ const Home = () => {
           <Movie />
           <Footer />
         </div>
-        <MiddleColumn />
       </div>
     </>
   );
