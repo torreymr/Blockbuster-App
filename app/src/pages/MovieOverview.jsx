@@ -22,7 +22,9 @@ const MovieOverview = () => {
           />
         )}
         <Navbar toggleDropdown={toggleDropdown} />
-        <Main />
+        <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[8rem] relative">
+          <Main />
+        </div>
       </div>
     </>
   );
