@@ -7,7 +7,7 @@ import Searchbar from "../components/Searchbar.jsx";
 
 const MovieOverview = () => {
   const [movie, setMovie] = useState([]);
-  const { id } = useParams();
+  const { id: movieID } = useParams();
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
@@ -16,7 +16,7 @@ const MovieOverview = () => {
   };
 
   useEffect(() => {
-    axios.get(requests.requestMovie(id)).then((response) => {
+    axios.get(requests.requestMovie(movieID)).then((response) => {
       setMovie(response.data);
     });
   });
