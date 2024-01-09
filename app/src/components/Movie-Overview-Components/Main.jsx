@@ -18,7 +18,7 @@ const Main = () => {
     });
   }, []);
   return (
-    <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[8rem]">
+    <div className="h-full w-full">
       <img
         src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
         alt={movie?.title}
