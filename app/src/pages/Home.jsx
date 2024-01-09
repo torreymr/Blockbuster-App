@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Navbar from "../components/Global components/Navbar.jsx";
-import Searchbar from "../components/Global components/Mobile searchbar.jsx";
+import Navbar from "../components/Global-Components/Navbar.jsx";
+import Searchbar from "../components/Global-Components/Mobile searchbar.jsx";
 
-import Movie from "../components/Home page components/Movie.jsx";
-import Row from "../components/Home page components/Row.jsx";
+import Movie from "../components/Home-Page-Components/Movie.jsx";
+import Row from "../components/Home-Page-Components/Row.jsx";
 import requests from "../Requests.js";
-import Footer from "../components/Global components/Footer.jsx";
+import Footer from "../components/Global-Components/Footer.jsx";
 
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);

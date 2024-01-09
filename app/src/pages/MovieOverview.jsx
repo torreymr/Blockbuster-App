@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import requests from "../Requests.js";
-import Navbar from "../components/Global components/Navbar.jsx";
-import Searchbar from "../components/Global components/Mobile searchbar.jsx";
-import Main from "../components/Movie overview components/Main.jsx";
+import Navbar from "../components/Global-Components/Navbar.jsx";
+import Searchbar from "../components/Global-Components/Mobile searchbar.jsx";
+import Main from "../components/Movie-Overview-Components/Main.jsx";
 
 const MovieOverview = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
