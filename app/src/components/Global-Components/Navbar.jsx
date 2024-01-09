@@ -20,7 +20,7 @@ const Navbar = ({ toggleDropdown }) => {
             onClick={handleLogoClick}
           >
             <BiSolidMoviePlay className="w-[3rem] md:w-[4rem] h-auto" />
-            <p className="text-1xl md:text-3xl w-fit font-thin text-nowrap tracking-wider">
+            <p className="text-2xl md:text-3xl w-fit font-thin text-nowrap tracking-wider">
               WE LOVE MOVIES
             </p>
           </div>
