@@ -14,16 +14,26 @@ const Main = () => {
     });
 
     axios.get(requests.requestMovieImages(movieID)).then((response) => {
-      setmovieImages(response.data);
+      setmovieImages(response.data.logos[0]);
     });
   }, []);
   return (
-    <div className="h-full w-full">
+    <div className="h-[45rem] w-full relative">
       <img
         src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
         alt={movie?.title}
-        className="h-[45rem] w-full object-cover"
+        className="h-full w-full object-cover absolute top-0 left-0"
       />
+      <div className="bg-gradient-to-r from-black h-full w-full absolute top-0 left-0"></div>
+      <div className="h-full w-full absolute left-0 top-0 flex flex-col justify-end">
+        <div className="px-[1rem]">
+          <img
+            src={`https://image.tmdb.org/t/p/original${movieImages?.file_path}`}
+            alt={movie?.title}
+          />
+          <p></p>
+        </div>
+      </div>
     </div>
   );
 };
