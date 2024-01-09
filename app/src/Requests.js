@@ -9,7 +9,9 @@ const requests = {
     `https://api.themoviedb.org/3/movie/${id}?api_key=${key}`,
   requestMovieImages: (id) =>
     `https://api.themoviedb.org/3/movie/${id}/images?api_key=${key}&include_image_language=en`,
+
+  requestMovieProviders: (id) =>
+    `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${key}`,
 };
 
 export default requests;
-//848326
