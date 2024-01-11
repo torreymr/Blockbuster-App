@@ -5,8 +5,9 @@ import requests from "../../Requests";
 import Movie from "../Home-Page-Components/Movie";
 
 const Main = () => {
-  const [movie, setMovie] = useState([]);
-  const [movieProviders, setmovieProviders] = useState([]);
+  const [movie, setMovie] = useState(null);
+  const [streamable, setStreamable] = useState(true);
+
   const { id: movieID } = useParams();
 
   useEffect(() => {
@@ -14,15 +15,7 @@ const Main = () => {
       setMovie(response.data);
     });
 
-    axios.get(requests.requestMovieProviders(movieID)).then((response) => {
-      const { buy, rent, frontrate } = response.data.results.US;
-
-      const provider = frontrate || buy;
-      console.log(provider);
-
-      setmovieProviders(provider);
-      console.log(movieProviders);
-    });
+    axios.get(requests.requestMovieProviders(movieID)).then((response) => {});
   }, []);
 
   return (
@@ -34,14 +27,13 @@ const Main = () => {
       />
       <div className="bg-gradient-to-r from-black h-full w-full absolute top-0 left-0"></div>
       <div className="h-full w-full absolute left-0 top-0 flex flex-col justify-between text-white">
-        <div className="bg-black opacity-95 py-4 px-2 font-bold flex items-center justify-center gap-4">
-          Streaming on
-          <img
-            src={`https://image.tmdb.org/t/p/original${movieProviders}`}
-            alt="default"
-            className="w-[2rem] h-auto"
-          />
-        </div>
+        {streamable ? (
+          <div className="bg-black bg-opacity-50 py-2 font-bold flex items-center justify-center gap-4">
+            Streaming on
+          </div>
+        ) : (
+          <div></div>
+        )}
         <div>
           <p>Main stuff</p>
         </div>
