@@ -5,6 +5,7 @@ import requests from "../Requests.js";
 import Navbar from "../components/Global-Components/Navbar.jsx";
 import Searchbar from "../components/Global-Components/Mobile searchbar.jsx";
 import Main from "../components/Movie-Overview-Components/Main.jsx";
+import MainDetails from "../components/Movie-Overview-Components/mainDetails.jsx";
 
 const MovieOverview = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -24,6 +25,7 @@ const MovieOverview = () => {
         <Navbar toggleDropdown={toggleDropdown} />
         <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[8rem] relative">
           <Main />
+          <MainDetails />
         </div>
       </div>
     </>
