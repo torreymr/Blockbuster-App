@@ -2,12 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import requests from "../../Requests";
-import Movie from "../Home-Page-Components/Movie";
 
 const Main = () => {
   const [movie, setMovie] = useState(null);
   const [streamable, setStreamable] = useState(false);
-  const year = movie?.release_date.split("-")[0];
 
   const { id: movieID } = useParams();
 
