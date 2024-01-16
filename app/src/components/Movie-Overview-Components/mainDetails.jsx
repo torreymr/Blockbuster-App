@@ -4,7 +4,21 @@ import { useParams } from "react-router-dom";
 import requests from "../../Requests";
 
 const MainDetails = () => {
+  const { id: movieID } = useParams();
+
+  useEffect(() => {
+    axios.get(requests.requestMovie(movieID)).then((response) => {
+      setMovie(response.data);
+    });
+
+    axios.get(requests.requestMovieReleaseDates(movieID)).then((response) => {
+      setMovieReleaseDates(response.data.results);
+    });
+  }, []);
+
   const [movie, setMovie] = useState(null);
+  const [movieReleaseDates, setMovieReleaseDates] = useState(null);
+
   const releaseDate =
     movie?.release_date.split("-")[1] +
     "-" +
@@ -20,19 +34,26 @@ const MainDetails = () => {
 
   const runtime = setRuntime(movie?.runtime);
 
-  const { id: movieID } = useParams();
+  const movieRating = () => {
+    const usData = movieReleaseDates?.find((item) => item.iso_3166_1 === "US");
 
-  useEffect(() => {
-    axios.get(requests.requestMovie(movieID)).then((response) => {
-      setMovie(response.data);
-    });
+    if (usData) {
+      const releaseDates = usData.release_dates;
 
-    axios.get(requests.requestMovieProviders(movieID)).then((response) => {});
-  }, []);
+      for (let i = 0; i < releaseDates.length; i++) {
+        const certification = releaseDates[i].certification;
+
+        if (certification) {
+          return certification;
+        }
+      }
+    }
+  };
 
   return (
     <div className="text-white py-[1rem] flex flex-col gap-1">
       <div className="font-bold text-4xl">{movie?.title}</div>
+      <div className="text-gray-500 font-bold">Rated: {movieRating()}</div>
       <div className="text-gray-500 italic">
         {releaseDate} • {runtime}
       </div>

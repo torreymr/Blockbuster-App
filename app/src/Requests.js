@@ -12,6 +12,8 @@ const requests = {
 
   requestMovieProviders: (id) =>
     `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${key}`,
+  requestMovieReleaseDates: (id) =>
+    `https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${key}`,
 };
 
 export default requests;
