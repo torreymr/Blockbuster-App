@@ -42,7 +42,7 @@ const Row = ({ type, rowID, title }) => {
   return (
     <div className="text-white">
       <div className="h-[full] flex flex-col items-center w-full justify-center pt-4">
-        <h1 className="text-4xl font-bold w-full pb-4">{title}</h1>
+        <h1 className="text-3xl font-bold w-full pb-4">{title}</h1>
         <div className="flex w-full items-center relative group">
           <div
             id={"slider" + rowID}
