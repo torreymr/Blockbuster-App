@@ -20,8 +20,8 @@ const Navbar = ({ toggleDropdown }) => {
             onClick={handleLogoClick}
           >
             <BiSolidMoviePlay className="w-[3rem] md:w-[4rem] h-auto" />
-            <p className="text-2xl md:text-3xl w-fit font-thin text-nowrap tracking-wider">
-              WE LOVE MOVIES
+            <p className="text-2xl md:text-4xl w-fit text-nowrap tracking-wider font-bold">
+              MOVIE NIGHT
             </p>
           </div>
           <div className="w-[100%] hidden lg:flex items-center gap-4">
