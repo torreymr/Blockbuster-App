@@ -23,7 +23,7 @@ const Row = ({ type, rowID, title }) => {
           fetchedMovies = await fetchUpcomingMovies();
         }
 
-        setMovies(fetchedMovies);
+        setMovies(fetchedMovies.results);
       } catch (error) {
         console.error(`Error fetching ${type} movies:`, error);
       }

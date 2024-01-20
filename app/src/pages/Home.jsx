@@ -4,7 +4,7 @@ import Searchbar from "../components/Global-Components/Mobile searchbar.jsx";
 
 import Row from "../components/Home-Page-Components/Row.jsx";
 import Footer from "../components/Global-Components/Footer.jsx";
-import TodaysPick from "../components/Home-Page-Components/TodaysPick.jsx";
+import Main from "../components/Home-Page-Components/Main.jsx";
 
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -24,7 +24,7 @@ const Home = () => {
         )}
         <Navbar toggleDropdown={toggleDropdown} />
         <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[8rem] flex flex-col gap-4">
-          <TodaysPick />
+          <Main />
           <Row type="popular" rowID="one" title="Popular" />
           <Footer />
         </div>
