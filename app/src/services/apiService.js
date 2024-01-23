@@ -62,3 +62,16 @@ export const fetchMovieDetails = async (queryParams = {}, movieID = null) => {
 
   return fetchMovies(endpoint);
 };
+
+// Function to fetch movie certification
+export const fetchMovieReleaseDates = async (movieID = null) => {
+  const endpoint = `/movie/${movieID}/release_dates`;
+  return fetchMovies(endpoint);
+};
+
+// Function to fetch movie providers
+
+export const fetchMovieProviders = async (movieID = null) => {
+  const endpoint = `/movie/${movieID}/watch/providers`;
+  return fetchMovies(endpoint);
+};
