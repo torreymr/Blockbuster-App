@@ -1,87 +1,89 @@
 import React, { useState, useEffect } from "react";
 import {
-  fetchMovieDetails,
-  fetchMovieProviders,
-  fetchMovieReleaseDates,
-  fetchTopRatedMovies,
-} from "../../services/apiService";
+  fetchRandomMovieIDFromList,
+  getMovieCertification,
+  getMovieDetails,
+  getMovieDirector,
+  getMovieProvider,
+  getMovieTrailer,
+} from "../../utilities/apiUtils.mjs";
+import { fetchTopRatedMovies } from "../../services/apiService.mjs";
 
 const TodaysPick = () => {
-  // const setRuntime = (time) => {
-  //   const hours = Math.floor(time / 60);
-  //   const minutes = time % 60;
+  const [movieInfo, setMovieInfo] = useState(null);
 
-  //   return `${hours}h ${minutes}m`;
-  // };
-  // useEffect(() => {
-  //   let movieID;
+  useEffect(() => {
+    const getMovieID = async () => {
+      try {
+        const randomPageNumber = Math.floor(Math.random() * 5) + 1;
+        const movieId = await fetchRandomMovieIDFromList(
+          fetchTopRatedMovies(randomPageNumber)
+        );
+        return movieId;
+      } catch (error) {
+        console.error("Error");
+      }
+    };
 
-  //   const fetchData = async () => {
-  //     try {
-  //       // Fetching top rated movies
-  //       const randomPage = Math.floor(Math.random() * 10) + 1;
-  //       const moviesParams = {
-  //         page: randomPage,
-  //         language: "en-US",
-  //       };
-  //       const moviesResponse = await fetchTopRatedMovies(moviesParams);
-  //       // Getting random movie
-  //       const randomIndex = Math.floor(
-  //         Math.random() * moviesResponse.results.length
-  //       );
-  //       const randomMovie = moviesResponse.results[randomIndex];
-  //       movieID = randomMovie.id;
+    const gatherData = async () => {
+      try {
+        const movieID = await getMovieID();
+        const [
+          movieDetails,
+          movieTrailer,
+          movieDirector,
+          movieCertification,
+          movieProvider,
+        ] = await Promise.all([
+          getMovieDetails(movieID),
+          getMovieTrailer(movieID),
+          getMovieDirector(movieID),
+          getMovieCertification(movieID),
+          getMovieProvider(movieID),
+        ]);
 
-  //       // Fetching random movie details
-  //       const movieParams = {
-  //         language: "en-US",
-  //       };
-  //       const detailsResponse = await fetchMovieDetails(movieParams, movieID);
-  //       setMovie(detailsResponse);
+        const movieData = {
+          movieDetails,
+          movieTrailer,
+          movieDirector,
+          movieCertification,
+          movieProvider,
+        };
+        setMovieInfo(movieData);
+      } catch (error) {
+        console.error("Error");
+      }
+    };
 
-  //       // Fetching movie certification
-  //       const releaseDatesResponse = await fetchMovieReleaseDates(movieID);
-  //       const releaseDates = releaseDatesResponse.results;
-  //       const getMovieRating = (data) => {
-  //         const usData = data?.find((item) => item.iso_3166_1 === "US");
-
-  //         if (usData) {
-  //           const releaseDates = usData.release_dates;
-
-  //           for (let i = 0; i < releaseDates.length; i++) {
-  //             if (releaseDates[i].certification !== "") {
-  //               const certification = releaseDates[i].certification;
-  //               return certification;
-  //             } else {
-  //               for (const result of data) {
-  //                 for (const releaseDate of result.release_dates) {
-  //                   if (releaseDate.certification !== "") {
-  //                     const certification = releaseDate.certification;
-  //                     return certification;
-  //                     break;
-  //                   }
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       };
-  //       setMovieRating(getMovieRating(releaseDates));
-
-  //       // // Fetching movie providers
-  //       // const movieProviders = await fetchMovieProviders(movieID);
-  //     } catch (error) {
-  //       console.error("Error fetching data", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+    gatherData();
+  }, []);
 
   return (
-    <div className="w-full h-[40rem] flex flex-col items-center">
-      <div></div>
-      <div></div>
+    <div className="w-full h-[40rem] flex flex-col items-center justify-end">
+      <div className="text-white">
+        {movieInfo ? (
+          <>
+            <div className="h-auto w-[18rem]">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${movieInfo.movieDetails.poster_path}`}
+                alt={movieInfo.movieDetails.title}
+                className="w-full h-full"
+              />
+            </div>
+            <div>
+              {movieInfo.movieDetails.genres.map((genre, index) => (
+                <span key={index} className="text-sm ml-1">
+                  {genre}
+                </span>
+              ))}
+            </div>
+            <div></div>
+          </>
+        ) : (
+          <div></div>
+        )}
+      </div>
+
       <div className="w-full"></div>
     </div>
   );
