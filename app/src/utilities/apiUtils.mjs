@@ -36,30 +36,51 @@ export const getMovieDetails = async (movieIdentification) => {
       return genres;
     }
   };
-  const {
-    id,
-    title,
-    backdrop_path,
-    poster_path,
-    overview,
-    release_date,
-    runtime,
-    tagline,
-    vote_average,
-  } = movieDetails;
+
+  const handleMovieReleaseDate = () => {
+    const movieReleaseDate = movieDetails.release_date;
+    const movieReleaseDateSplit = movieReleaseDate.split("-");
+    const month = movieReleaseDateSplit[1];
+    const day = movieReleaseDateSplit[2];
+    const year = movieReleaseDateSplit[0];
+
+    return `${month}-${day}-${year}`;
+  };
+
+  const handleMovieRuntime = () => {
+    const runtime = movieDetails.runtime;
+    const hours = Math.floor(runtime / 60);
+    const minutes = runtime % 60;
+
+    if (hours > 0) {
+      return `${hours}h ${minutes}m`;
+    } else {
+      return `${minutes}m`;
+    }
+  };
+
+  const handleVoteAverage = () => {
+    const voteAverage = movieDetails.vote_average;
+    const newVoteAverage = voteAverage.toFixed(2);
+    return newVoteAverage;
+  };
+
+  const { id, title, backdrop_path, poster_path, overview, tagline } =
+    movieDetails;
+
   const extractedData = {
     id,
     title,
     backdrop_path,
     poster_path,
     overview,
-    release_date,
-    runtime,
     tagline,
-    vote_average,
+    vote_average: handleVoteAverage(),
     genres: getMovieGenres(),
+    release_date: handleMovieReleaseDate(),
+    runtime: handleMovieRuntime(),
   };
-  console.log(extractedData);
+
   return extractedData;
 };
 
@@ -128,27 +149,29 @@ export const getMovieProvider = async (movieIdentification) => {
   const movieProvidersResponse = await fetchMovieProviders(movieID);
   const movieProviders = movieProvidersResponse.results;
 
-  let provider = null;
+  let provider = {};
   if (movieProviders.US) {
     const currentCountry = movieProviders.US;
     if (currentCountry.flatrate) {
-      provider = currentCountry.flatrate[0];
+      provider.type = "flatrate";
+      provider.logo_path = currentCountry.flatrate[0].logo_path;
+      provider.name = currentCountry.flatrate[0].provider_name;
+    } else if (currentCountry.free) {
+      provider.type = "free";
+      provider.logo_path = currentCountry.free[0].logo_path;
+      provider.name = currentCountry.free[0].provider_name;
     } else if (currentCountry.rent) {
-      provider = currentCountry.rent[0];
+      provider.type = "rent";
+      provider.logo_path = currentCountry.rent[0].logo_path;
+      provider.name = currentCountry.rent[0].provider_name;
     } else if (currentCountry.buy) {
-      provider = currentCountry.buy[0];
+      provider.type = "buy";
+      provider.logo_path = currentCountry.buy[0].logo_path;
+      provider.name = currentCountry.buy[0].provider_name;
     }
   } else {
     provider = null;
   }
 
-  const logoPath = provider && provider.logo_path ? provider.logo_path : null;
-  const providerName =
-    provider && provider.provider_name ? provider.provider_name : null;
-
-  const extractedData = {
-    logo_path: logoPath,
-    provider_name: providerName,
-  };
-  return extractedData;
+  return provider;
 };
