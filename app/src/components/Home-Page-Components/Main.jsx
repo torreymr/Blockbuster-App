@@ -26,13 +26,9 @@ const TodaysPick = () => {
   };
 
   const handleWatchTrailerClickMobile = () => {
-    const getTrailerLink = (key) => {
-      return `https://www.youtube.com/watch?dv=${key}`;
-    };
-
-    if (movieInfo.movieTrailer.key) {
-      const trailerLink = getTrailerLink(movieInfo.movieTrailer.key);
-      navigate(trailerLink); // Use navigate to navigate to the trailer link
+    if (movieInfo && movieInfo.movieTrailer && movieInfo.movieTrailer.key) {
+      const trailerUrl = `https://www.youtube.com/watch?v=${movieInfo.movieTrailer.key}`;
+      window.open(trailerUrl, "_blank");
     }
   };
 
@@ -121,7 +117,7 @@ const TodaysPick = () => {
             <div className="flex justify-between w-full">
               {movieInfo.movieTrailer.key ? (
                 <a
-                  className="w-[13rem] h-[4rem] 2xl:h-[5rem] md:w-[18rem] 2xl:text-xl font-bold opacity-85 bg-white text-black rounded-xl border-2 border-black"
+                  className="w-[13rem] h-[4rem] 2xl:h-[5rem] md:w-[18rem] 2xl:text-xl font-bold opacity-85 bg-white text-black rounded-xl border-2 border-black flex justify-center items-center cursor-pointer"
                   onClick={handleWatchTrailerClickMobile}
                 >
                   Watch Trailer

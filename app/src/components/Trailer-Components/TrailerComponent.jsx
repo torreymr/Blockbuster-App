@@ -11,11 +11,11 @@ const DesktopTrailerComponent = ({ videoId, onClose }) => {
     },
   };
   return (
-    <div className="h-[100vh] w-[100vw]">
+    <div>
       <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 z-[100]"></div>
-      <div className="trailer-wrapper flex">
+      <div className="trailer-wrapper flex gap-4">
         <YouTube videoId={videoId} opts={opts} />
-        <button onClick={onClose} className="w-12 h-12">
+        <button onClick={onClose} className="w-[4rem] h-[4rem]">
           <IoIosClose className="text-white w-full h-full" />
         </button>
       </div>
