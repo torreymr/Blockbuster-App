@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   fetchRandomMovieIDFromList,
   getMovieCertification,
@@ -8,10 +9,12 @@ import {
   getMovieTrailer,
 } from "../../utilities/apiUtils.mjs";
 import { fetchTopRatedMovies } from "../../services/apiService.mjs";
+import DesktopTrailerComponent from "../Trailer-Components/TrailerComponent";
 
 const TodaysPick = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [showTrailer, setShowTrailer] = useState(false);
+  const navigate = useNavigate();
 
   const truncateOverview = (overview, maxLength) => {
     const words = overview.split(" ");
@@ -22,8 +25,23 @@ const TodaysPick = () => {
     return overview;
   };
 
+  const handleWatchTrailerClickMobile = () => {
+    const getTrailerLink = (key) => {
+      return `https://www.youtube.com/watch?dv=${key}`;
+    };
+
+    if (movieInfo.movieTrailer.key) {
+      const trailerLink = getTrailerLink(movieInfo.movieTrailer.key);
+      navigate(trailerLink); // Use navigate to navigate to the trailer link
+    }
+  };
+
   const handleWatchTrailerClick = () => {
     setShowTrailer(true);
+  };
+
+  const handleCloseTrailer = () => {
+    setShowTrailer(false);
   };
 
   useEffect(() => {
@@ -63,7 +81,6 @@ const TodaysPick = () => {
           movieCertification,
           movieProvider,
         };
-        console.log(movieProvider);
         setMovieInfo(movieData);
       } catch (error) {
         console.error("Error");
@@ -89,7 +106,7 @@ const TodaysPick = () => {
               {movieInfo.movieDetails.title}
             </div>
             <div className="w-full flex justify-center py-2">
-              {movieInfo.movieDetails.genres.slice(0, 5).map((genre, index) => (
+              {movieInfo.movieDetails.genres.slice(0, 4).map((genre, index) => (
                 <div
                   key={index}
                   className="text-lg flex font-bold text-gray-300"
@@ -102,10 +119,15 @@ const TodaysPick = () => {
               ))}
             </div>
             <div className="flex justify-between w-full">
-              <button className="border-2 border-solid border-white w-[45%] h-[5rem] rounded-xl font-bold">
-                Watch Trailer
-              </button>
-              <button className="border-2 border-solid border-white w-[45%] h-[5rem] rounded-xl bg-white text-black font-bold">
+              {movieInfo.movieTrailer.key ? (
+                <a
+                  className="w-[13rem] h-[4rem] 2xl:h-[5rem] md:w-[18rem] 2xl:text-xl font-bold opacity-85 bg-white text-black rounded-xl border-2 border-black"
+                  onClick={handleWatchTrailerClickMobile}
+                >
+                  Watch Trailer
+                </a>
+              ) : null}
+              <button className="border-2 border-solid border-white w-[13rem] md:w-[18rem] h-[4rem] rounded-lg bg-black text-white font-bold">
                 Details
               </button>
             </div>
@@ -218,13 +240,15 @@ const TodaysPick = () => {
                       </div>
                     </div>
                     <div className="flex w-[90%] m-auto justify-center gap-[8rem]">
-                      <button
-                        className="w-[13rem] h-[6rem] 2xl:w-[15rem] 2xl:h-[8rem] 2xl:text-xl font-bold opacity-85 bg-white text-black rounded-xl border-2 border-black"
-                        onClick={handleWatchTrailerClick}
-                      >
-                        Watch Trailer
-                      </button>
-                      <button className="w-[13rem] h-[6rem] 2xl:w-[15rem] 2xl:h-[8rem] 2xl:text-xl font-bold opacity-85 bg-black text-white rounded-xl border-2 border-white">
+                      {movieInfo.movieTrailer.key ? (
+                        <button
+                          className="w-[13rem] h-[4rem] 2xl:h-[5rem] 2xl:text-xl font-bold opacity-85 bg-white text-black rounded-xl border-2 border-black"
+                          onClick={handleWatchTrailerClick}
+                        >
+                          Watch Trailer
+                        </button>
+                      ) : null}
+                      <button className="w-[13rem] h-[4rem] 2xl:h-[5rem] 2xl:text-xl font-bold opacity-85 bg-black text-white rounded-xl border-2 border-white">
                         Details
                       </button>
                     </div>
@@ -232,12 +256,17 @@ const TodaysPick = () => {
                 </div>
               </div>
             </div>
+            {showTrailer && movieInfo && movieInfo.movieTrailer ? (
+              <DesktopTrailerComponent
+                videoId={movieInfo.movieTrailer.key}
+                onClose={handleCloseTrailer}
+              />
+            ) : null}
           </>
         ) : (
           <div></div>
         )}
       </div>
-      <div className="hidden w-full"></div>
     </div>
   );
 };
