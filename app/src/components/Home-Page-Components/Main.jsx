@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   fetchRandomMovieIDFromList,
   getMovieCertification,
@@ -14,7 +13,6 @@ import DesktopTrailerComponent from "../Trailer-Components/TrailerComponent";
 const TodaysPick = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [showTrailer, setShowTrailer] = useState(false);
-  const navigate = useNavigate();
 
   const truncateOverview = (overview, maxLength) => {
     const words = overview.split(" ");
@@ -43,7 +41,7 @@ const TodaysPick = () => {
   useEffect(() => {
     const getMovieID = async () => {
       try {
-        const randomPageNumber = Math.floor(Math.random() * 15) + 1;
+        const randomPageNumber = Math.floor(Math.random() * 30) + 1;
         const movieId = await fetchRandomMovieIDFromList(
           fetchTopRatedMovies(randomPageNumber)
         );
@@ -116,12 +114,12 @@ const TodaysPick = () => {
             </div>
             <div className="flex justify-between w-full">
               {movieInfo.movieTrailer.key ? (
-                <a
-                  className="w-[13rem] h-[4rem] 2xl:h-[5rem] md:w-[18rem] 2xl:text-xl font-bold opacity-85 bg-white text-black rounded-xl border-2 border-black flex justify-center items-center cursor-pointer"
+                <div
+                  className="w-[13rem] h-[4rem] 2xl:h-[5rem] md:w-[18rem] 2xl:text-xl font-bold opacity-85 bg-white text-black rounded-xl border-2 border-black cursor-pointer flex justify-center items-center"
                   onClick={handleWatchTrailerClickMobile}
                 >
                   Watch Trailer
-                </a>
+                </div>
               ) : null}
               <button className="border-2 border-solid border-white w-[13rem] md:w-[18rem] h-[4rem] rounded-lg bg-black text-white font-bold">
                 Details
@@ -144,42 +142,42 @@ const TodaysPick = () => {
 
               {movieInfo.movieProvider ? (
                 <>
-                  <div className="w-full h-[4rem] text-white bg-black absolute top-0 left-0 opacity-50 flex justify-center items-center z-10"></div>
-                  <div className="w-full h-[4rem] absolute top-0 left-0 flex justify-center items-center text-white font-bold text-xl z-20">
+                  <div className="w-full h-[5rem] text-white bg-black absolute top-0 left-0 opacity-50 flex justify-center items-center z-10"></div>
+                  <div className="w-full h-[5rem] absolute top-0 left-0 flex justify-center items-center text-white font-bold text-xl z-20">
                     {movieInfo.movieProvider.type === "flatrate" ? (
-                      <div className="flex gap-4 items-center">
+                      <div className="flex gap-[1rem] items-center text-3xl">
                         Streaming on
                         <img
                           src={`https://image.tmdb.org/t/p/original/${movieInfo.movieProvider.logo_path}`}
                           alt={`${movieInfo.movieProvider.provider_name} logo`}
-                          className="w-[2rem] h-auto rounded-lg"
+                          className="w-[3.5rem] h-auto rounded-lg"
                         />
                       </div>
                     ) : movieInfo.movieProvider.type === "free" ? (
-                      <div className="flex gap-4 items-center">
+                      <div className="flex gap-4 items-center text-3xl">
                         Free to Watch on
                         <img
                           src={`https://image.tmdb.org/t/p/original/${movieInfo.movieProvider.logo_path}`}
                           alt={`${movieInfo.movieProvider.provider_name} logo`}
-                          className="w-[2rem] h-auto rounded-lg"
+                          className="w-[3.5rem] h-auto rounded-lg"
                         />
                       </div>
                     ) : movieInfo.movieProvider.type === "rent" ? (
-                      <div className="flex gap-4 items-center">
+                      <div className="flex gap-4 items-center text-3xl">
                         Available to Rent on
                         <img
                           src={`https://image.tmdb.org/t/p/original/${movieInfo.movieProvider.logo_path}`}
                           alt={`${movieInfo.movieProvider.provider_name} logo`}
-                          className="w-[2rem] h-auto rounded-lg"
+                          className="w-[3.5rem] h-auto rounded-lg"
                         />
                       </div>
                     ) : movieInfo.movieProvider.type === "buy" ? (
-                      <div className="flex gap-4 items-center">
+                      <div className="flex gap-4 items-center text-3xl">
                         Available to Buy on
                         <img
                           src={`https://image.tmdb.org/t/p/original/${movieInfo.movieProvider.logo_path}`}
                           alt={`${movieInfo.movieProvider.provider_name} logo`}
-                          className="w-[2rem] h-auto rounded-lg"
+                          className="w-[3.5rem] h-auto rounded-lg"
                         />
                       </div>
                     ) : (
