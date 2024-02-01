@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   fetchRandomMovieIDFromList,
   getMovieCertification,
@@ -13,6 +14,7 @@ import DesktopTrailerComponent from "../Trailer-Components/TrailerComponent";
 const TodaysPick = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [showTrailer, setShowTrailer] = useState(false);
+  const navigate = useNavigate();
 
   const truncateOverview = (overview, maxLength) => {
     const words = overview.split(" ");
@@ -36,6 +38,10 @@ const TodaysPick = () => {
 
   const handleCloseTrailer = () => {
     setShowTrailer(false);
+  };
+
+  const handleDetailsButton = (id) => {
+    navigate(`/details/${id}`);
   };
 
   useEffect(() => {
@@ -242,7 +248,12 @@ const TodaysPick = () => {
                           Watch Trailer
                         </button>
                       ) : null}
-                      <button className="w-[13rem] h-[4rem] 2xl:h-[5rem] 2xl:text-xl font-bold opacity-85 bg-black text-white rounded-xl border-2 border-white">
+                      <button
+                        className="w-[13rem] h-[4rem] 2xl:h-[5rem] 2xl:text-xl font-bold opacity-85 bg-black text-white rounded-xl border-2 border-white"
+                        onClick={() =>
+                          handleDetailsButton(movieInfo.movieDetails.id)
+                        }
+                      >
                         Details
                       </button>
                     </div>

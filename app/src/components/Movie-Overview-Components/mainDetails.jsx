@@ -63,6 +63,7 @@ const MainDetails = () => {
           <span key={genre.id}>{genre.name.split("-").join(" ")} </span>
         ))}
       </div>
+      <h1 className="fixed text-[6rem]">DUMMY PAGE</h1>
     </div>
   );
 };

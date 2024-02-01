@@ -25,7 +25,7 @@ const Home = () => {
         <Navbar toggleDropdown={toggleDropdown} />
         <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[8rem] flex flex-col gap-4">
           <Main />
-          {/* <Row type="popular" rowID="one" title="Popular" /> */}
+          <Row type="popular" rowID="one" title="Popular" />
           <Footer />
         </div>
       </div>
