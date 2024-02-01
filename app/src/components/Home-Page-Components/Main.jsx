@@ -205,11 +205,11 @@ const TodaysPick = () => {
                   </div>
                   <div className="w-[75%] h-[75%] flex flex-col text-white py-8">
                     <div className="w-full flex justify-between">
-                      <div className="w-full flex justify-between items-center">
+                      <div className="w-full flex justify-between items-center gap-4">
                         <div className="text-6xl font-bold pb-4">
                           {movieInfo.movieDetails.title}
                         </div>
-                        <div>{}</div>
+                        <div className="text-3xl font-bold">{`${movieInfo.movieDetails.vote_average}/10`}</div>
                       </div>
                     </div>
                     <div className="flex gap-6 text-gray-400 font-bold">
