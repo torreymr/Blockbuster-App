@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="w-full background-color min-h-[100vh]">
+      <div className="h-full w-full background-color min-h-[100vh] md:px-[8rem] px-[1rem] pb-[2rem] pt-[8rem] flex flex-col gap-4">
         {isDropdownVisible && (
           <Searchbar
             toggleDropdown={toggleDropdown}
@@ -23,11 +23,9 @@ const Home = () => {
           />
         )}
         <Navbar toggleDropdown={toggleDropdown} />
-        <div className="h-full w-full md:px-[8rem] px-[1rem] pb-[2rem] pt-[8rem] flex flex-col gap-4">
-          <Main />
-          <Row type="popular" rowID="one" title="Popular" />
-          <Footer />
-        </div>
+        <Main />
+        <Row type="popular" rowID="one" title="Popular" />
+        <Footer />
       </div>
     </>
   );

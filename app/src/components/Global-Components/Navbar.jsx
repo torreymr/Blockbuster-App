@@ -13,8 +13,8 @@ const Navbar = ({ toggleDropdown }) => {
 
   return (
     <>
-      <div className="text-gray-200 md:px-[8rem] px-[1rem] fixed top-0 left-0 w-full background-color z-50">
-        <div className="flex justify-between items-center py-[1.5rem] gap-[4rem]  border-b-2 border-gray-800">
+      <div className=" md:px-[8rem] px-[1rem] fixed top-0 left-0 w-full background-color z-50">
+        <div className="text-gray-200 flex justify-between items-center py-[1.5rem] gap-[4rem]  border-b-2 border-gray-800">
           <div
             className="w-full flex items-center gap-[1rem] cursor-pointer"
             onClick={handleLogoClick}
