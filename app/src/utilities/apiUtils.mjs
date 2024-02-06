@@ -2,8 +2,11 @@ import {
   fetchMovieCredits,
   fetchMovieDetails,
   fetchMovieProviders,
+  fetchMovieProvidersList,
   fetchMovieReleaseDates,
   fetchMovieVideos,
+  fetchPopularMovies,
+  fetchTopRatedMovies,
 } from "../services/apiService.mjs";
 
 export const fetchRandomMovieIDFromList = async (data) => {
@@ -174,4 +177,56 @@ export const getMovieProvider = async (movieIdentification) => {
   }
 
   return provider;
+};
+
+export const getProviderMovies = async (type, providerName, totalPages) => {
+  const movies = [];
+  const fetchRequests = [];
+
+  for (let page = 1; page <= totalPages; page++) {
+    fetchRequests.push(fetchTopRatedMovies(page));
+  }
+
+  const responses = await Promise.all(fetchRequests);
+
+  for (const response of responses) {
+    const popularMovies = response.results;
+
+    for (const currentMovie of popularMovies) {
+      const currentMovieID = currentMovie.id;
+      const movieProvidersResponse = await fetchMovieProviders(currentMovieID);
+      const movieProviders = movieProvidersResponse.results;
+      const movieProvidersUS = movieProviders.US;
+
+      if (movieProvidersUS && movieProvidersUS[type]) {
+        const currentMovieProviders = movieProvidersUS[type];
+        for (const provider of currentMovieProviders) {
+          if (provider.provider_name === providerName) {
+            const alreadyAdded = movies.some(
+              (movie) => movie.id === currentMovieID
+            );
+            if (!alreadyAdded) {
+              const currentMovieDetails = await getMovieDetails(currentMovieID);
+              movies.push(currentMovieDetails);
+            }
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return movies;
+};
+
+export const getProviderIcon = async (providerName = "Netflix") => {
+  const movieProvidersResponse = await fetchMovieProvidersList();
+  const movieProviders = movieProvidersResponse.results;
+  for (let i = 0; i < movieProviders.length; i++) {
+    const currentProvider = movieProviders[i];
+
+    if (currentProvider.provider_name === providerName) {
+      return currentProvider.logo_path;
+    }
+  }
 };

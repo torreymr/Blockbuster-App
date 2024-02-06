@@ -18,8 +18,8 @@ export const fetchMovies = async (endpoint) => {
 };
 
 // Function to fetch Popular Movies
-export const fetchPopularMovies = async () => {
-  return fetchMovies("/movie/popular");
+export const fetchPopularMovies = async (pageNum = 1) => {
+  return fetchMovies(`/movie/popular?language=en-US&page=${pageNum}`);
 };
 
 // Function to fetch Trending Movies
@@ -74,5 +74,10 @@ export const fetchMovieVideos = async (movieID) => {
 
 export const fetchMovieCredits = async (movieID) => {
   const endpoint = `/movie/${movieID}/credits`;
+  return fetchMovies(endpoint);
+};
+
+export const fetchMovieProvidersList = async () => {
+  const endpoint = `/watch/providers/movie`;
   return fetchMovies(endpoint);
 };

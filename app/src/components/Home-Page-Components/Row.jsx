@@ -1,36 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  fetchMovieProvidersList,
   fetchPopularMovies,
-  fetchTrendingMovies,
-  fetchUpcomingMovies,
-} from "../../services/apiService";
+} from "../../services/apiService.mjs";
+import {
+  getProviderIcon,
+  getProviderMovies,
+} from "../../utilities/apiUtils.mjs";
+import LoadingScreen from "../Global-Components/LoadingScreen";
 
-const Row = ({ type, rowID, title }) => {
-  // Fetching Data
-  const [movies, setMovies] = useState([]);
-
+const Row = ({ type, provider, rowID, pages }) => {
+  const [providerMovies, setProviderMovies] = useState(null);
+  const [providerIcon, setProviderIcon] = useState(null);
   useEffect(() => {
-    const fetchMoviesByType = async () => {
-      try {
-        let fetchedMovies;
+    const gatherData = async () => {
+      const providerMoviesResponse = await getProviderMovies(
+        type,
+        provider,
+        pages
+      );
 
-        if (type === "popular") {
-          fetchedMovies = await fetchPopularMovies();
-        } else if (type === "trending") {
-          fetchedMovies = await fetchTrendingMovies();
-        } else if (type === "upcoming") {
-          fetchedMovies = await fetchUpcomingMovies();
-        }
-
-        setMovies(fetchedMovies.results);
-      } catch (error) {
-        console.error(`Error fetching ${type} movies:`, error);
-      }
+      const providerIcon = await getProviderIcon(provider);
+      setProviderIcon(providerIcon);
+      setProviderMovies(providerMoviesResponse);
     };
 
-    fetchMoviesByType();
-  }, [type]);
+    gatherData();
+  }, []);
 
   //Navigate Function
   const navigate = useNavigate();
@@ -40,27 +37,34 @@ const Row = ({ type, rowID, title }) => {
   };
 
   return (
-    <div className="text-white">
-      <div className="h-[full] flex flex-col items-center w-full justify-center pt-4">
-        <h1 className="text-3xl font-bold w-full pb-4">{title}</h1>
-        <div className="flex w-full items-center relative group">
-          <div
-            id={"slider" + rowID}
-            className="flex overflow-x-auto gap-[1rem] w-[85%] scroll-smooth flex-1 slider"
-          >
-            {movies.map((item, id) => (
-              <img
-                src={`https://image.tmdb.org/t/p/original/${item?.poster_path}`}
-                alt={item?.title}
-                className="w-[10rem] object-cover cursor-pointer"
-                key={id}
-                onClick={() => handleMovieClick(item.id)}
-              />
+    <>
+      <div className="text-white flex flex-col gap-4">
+        <div className="flex gap-4 items-center h-[4rem]">
+          <div className="text-4xl font-bold">Top Rated on</div>
+          <img
+            src={`https://image.tmdb.org/t/p/original/${providerIcon}`}
+            className="h-full w-auto rounded-lg"
+          />
+        </div>
+        <div className="flex gap-4 overflow-x-auto">
+          {providerMovies &&
+            providerMovies.map((movie) => (
+              <div key={movie.id} className="relative">
+                <img
+                  className="max-w-[15rem] h-auto object-cover cursor-pointer"
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  alt={movie.title}
+                  onClick={() => handleMovieClick(movie.id)}
+                />
+                <div className="absolute top-0 right-0 h-[3.5rem] w-[3.5rem] bg-black opacity-40 cursor-pointer rounded-bl-lg rounded-br-lg"></div>
+                <div className="absolute top-0 right-0 h-[3.5rem] w-[3.5rem] p-4 flex items-center justify-center text-xs font-bold">
+                  {movie.vote_average}/10
+                </div>
+              </div>
             ))}
-          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

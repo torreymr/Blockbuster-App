@@ -39,3 +39,42 @@
   transform: translate(-50%, -50%);
   z-index: 999;
 }
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-screen h2 {
+  color: white;
+  font-size: 24px;
+}
+
+/* Optional: Center the dots horizontally */
+.loading-screen h2::after {
+  content: "";
+  display: inline-block;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+}
