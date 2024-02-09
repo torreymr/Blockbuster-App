@@ -8,7 +8,7 @@ const Searchbar = ({ toggleDropdown, isActive }) => {
       <div
         className={`dropdown-content ${
           isActive ? "active" : ""
-        } lg:hidden z-[51] md:px-[8rem] px-[1rem]`}
+        } lg:hidden z-[51] md:px-[8rem] px-[1rem] fixed top-0 left-0`}
       >
         <div className="py-[2rem] w-[100%] flex justify-center gap-4 text-white">
           <input
