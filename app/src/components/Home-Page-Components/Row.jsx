@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  fetchMovieProvidersList,
-  fetchPopularMovies,
-} from "../../services/apiService.mjs";
-import {
   getProviderIcon,
   getProviderMovies,
 } from "../../utilities/apiUtils.mjs";
-import LoadingScreen from "../Global-Components/LoadingScreen";
 
 const Row = ({ type, provider, rowID, pages }) => {
   const [providerMovies, setProviderMovies] = useState(null);
@@ -28,7 +23,6 @@ const Row = ({ type, provider, rowID, pages }) => {
     gatherData();
   }, []);
 
-  //Navigate Function
   const navigate = useNavigate();
 
   const handleMovieClick = (id) => {
