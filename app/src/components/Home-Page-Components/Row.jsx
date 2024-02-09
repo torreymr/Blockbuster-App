@@ -15,14 +15,13 @@ const Row = ({ type, provider, rowID, pages }) => {
   const [providerIcon, setProviderIcon] = useState(null);
   useEffect(() => {
     const gatherData = async () => {
+      const providerIcon = await getProviderIcon(provider);
+      setProviderIcon(providerIcon);
       const providerMoviesResponse = await getProviderMovies(
         type,
         provider,
         pages
       );
-
-      const providerIcon = await getProviderIcon(provider);
-      setProviderIcon(providerIcon);
       setProviderMovies(providerMoviesResponse);
     };
 
