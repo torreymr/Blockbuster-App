@@ -57,7 +57,7 @@ const Row = ({ type, provider, rowID, pages }) => {
                     onClick={() => handleMovieClick(movie.id)}
                   />
                   <div className="absolute top-0 right-0 h-[3.5rem] w-[3.5rem] bg-black opacity-40 cursor-pointer rounded-bl-lg rounded-br-lg"></div>
-                  <div className="absolute top-0 right-0 h-[3.5rem] w-[3.5rem] p-4 flex items-center justify-center text-xs font-bold">
+                  <div className="absolute top-0 right-0 h-[3.5rem] w-[3.5rem] p-4 flex items-center justify-center text-xs font-bold hover:bg-neutral-500  rounded-bl-lg rounded-br-lg">
                     {movie.vote_average}/10
                   </div>
                 </div>
