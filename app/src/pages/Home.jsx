@@ -25,9 +25,9 @@ const Home = () => {
         )}
         <Navbar toggleDropdown={toggleDropdown} />
         <Main />
-        <Row provider="Netflix" type="flatrate" rowID="One" pages={15} />
-        <Row provider="Disney Plus" type="flatrate" rowID="Two" pages={15} />
-        <Row provider="Hulu" type="flatrate" rowID="Three" pages={30} />
+        <Row provider="Netflix" type="flatrate" pages={15} />
+        <Row provider="Disney Plus" type="flatrate" pages={15} />
+        <Row provider="Hulu" type="flatrate" pages={30} />
         <Main />
         <Footer />
       </div>
